@@ -2,20 +2,15 @@ import os
 
 os.system("clear")
 
+directions = [ (0,1), (1,0), (0,-1), (-1,0)]
+
 def size_of_basin(area,x,y,size=0):
-    # for a in area:
-    #     print(a)
-    # print("\n")
     area[x][y] = 9
     size += 1
-    if area[x][y+1] != 9:
-        size = size_of_basin(area,x,y+1,size)
-    if area[x+1][y] != 9:
-        size = size_of_basin(area,x+1,y,size)
-    if area[x][y-1] != 9:
-        size = size_of_basin(area,x,y-1,size)
-    if area[x-1][y] != 9:
-        size = size_of_basin(area,x-1,y,size)
+    for direction in directions:
+        dx,dy = direction
+        if area[x+dx][y+dy] != 9:
+            size = size_of_basin(area,x+dx,y+dy,size)
     return size
     
 
