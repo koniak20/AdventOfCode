@@ -5,10 +5,9 @@ n = 12
 directions = [(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1)]
 
 def BFS (grid,x,y):
-    # print(x,y)
+
     result = 1
-    que = []
-    que.append((x,y))
+    que = [(x,y)]
     visited = []
     while que:
         x,y = que.pop(0)
@@ -39,14 +38,13 @@ def check(grid):
                 return False
     return True
 
-
-
 if __name__ == '__main__':
     with open("/home/koniak20/Downloads/input.txt") as fuck:
         data = fuck.readlines()
         data = [line.strip() for line in data]
         print(data)
         grid = [[-1]*12 for _ in range(12)]
+
         for row in range(1,11):
             for column in range(1,11):
                 grid[row][column] = int(data[row-1][column-1])
@@ -58,16 +56,7 @@ if __name__ == '__main__':
                 for column in range(1,11):
                     if grid[row][column] > 9:
                         flashes += BFS(grid,row,column)
-            # print(f'''Step {_+1}''')
-            # show(grid)
             if check(grid):
                 print("All flashed simultaneously at step : ", _+1)
                 break
-        # grid_add(grid)
-        # show(grid)
-        print(flashes)
-                    
-
-        
-
-        
+        print(flashes)       
