@@ -19,7 +19,7 @@ def DFS(node,visited=["start"],twice=True):
         
     return result
 if __name__ == '__main__':
-    with open("/home/koniak20/Downloads/input.txt") as fuck:
+    with open("/home/koniak20/Desktop/Advent_of_code/Advent_of_code_2021/input_12/input.txt") as fuck:
         data = fuck.readlines()
         for line in data:
             a,b = line.strip().split("-")
